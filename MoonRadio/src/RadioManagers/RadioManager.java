@@ -6,8 +6,8 @@
 
 package RadioManagers;
 
-import DatabaseHandling.DatabaseHelper;
-import IOHandling.IOHandler;
+import SingletonHelpers.DatabaseHelper;
+import SingletonHelpers.IOHandler;
 import QueueManager.Action;
 import Utility.SoundTrack;
 import java.io.BufferedReader;
@@ -83,7 +83,7 @@ public class RadioManager implements RadioRule{
                 }
             }
             
-            //Delete already downloaded sound tracks.
+            //Remove already downloaded sound tracks from the list.
             while(!tracks.isEmpty()){
                 SoundTrack track = tracks.get(0);
                 long timestamp = track.getTimestampLong();
@@ -95,8 +95,8 @@ public class RadioManager implements RadioRule{
                 }
             }
             
-            //
-            
+            //Send the list of sound tracks to IOHandler to download them
+            IOHandler.getInstance().downloadSoundTracks(tracks);
             
         } catch (MalformedURLException ex) {
             Logger.getLogger(RadioManager.class.getName()).log(Level.SEVERE, null, ex);

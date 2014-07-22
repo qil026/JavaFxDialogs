@@ -40,7 +40,7 @@ public class SoundTrack {
     private void generateFileData(){
         this.timestamp_string = url.substring(46,56);
         this.timestamp_long = Long.parseLong(timestamp_string);
-        this.localFileName = url.substring(46);
+        this.localFileName = url;
     }
     
     //Setters ------------------------------------------------------------------

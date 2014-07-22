@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 
-package Utility;
+package SingletonHelpers;
 
 /**
  *
  * @author Frankie(Qingyang) Liu (qingyang.liu@oracle.com) Oracle Inc.
  */
-public class Const {
+public class DatabaseHelper {
     
-    //Root directory for the radio app (with the final forward slash)
-    public final static String root_dir = "/Users/frankie/Workspace/WebDev/RadioHack/";
-    
-    
+    public DatabaseHelper(){
+        
+    }
 }
