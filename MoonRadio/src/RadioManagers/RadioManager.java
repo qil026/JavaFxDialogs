@@ -84,16 +84,24 @@ public class RadioManager implements RadioRule{
             }
             
             //Remove already downloaded sound tracks from the list.
+            //Also set the lastSoundTrackTimeStamp
+            long newEndTime = this.lastSoundTrackTimeStamp;
             while(!tracks.isEmpty()){
                 SoundTrack track = tracks.get(0);
                 long timestamp = track.getTimestampLong();
                 if(timestamp <= this.lastSoundTrackTimeStamp){
                     tracks.remove(0);
+                    if(timestamp > newEndTime){
+                        newEndTime = timestamp;
+                    }
                 }
                 else{
                     break;
                 }
             }
+            this.lastSoundTrackTimeStamp = newEndTime;
+            
+            
             
             //Send the list of sound tracks to IOHandler to download them
             IOHandler.getInstance().downloadSoundTracks(tracks);
